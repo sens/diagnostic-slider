@@ -77,6 +77,8 @@ server <- function(input, output, session) {
         sens <- input$sensitivity
         spec <- input$specificity
         prev <- input$prevalence
+        ppv <- input$ppv
+        npv <- input$npv
         out <- calc(sens,spec,prev)
         out$pv})
 
@@ -84,6 +86,8 @@ server <- function(input, output, session) {
         sens <- input$sensitivity
         spec <- input$specificity
         prev <- input$prevalence
+        ppv <- input$ppv
+        npv <- input$npv
         out <- calc(sens,spec,prev)
         
         updateSliderInput(session, "ppv", min=0,max=100,
