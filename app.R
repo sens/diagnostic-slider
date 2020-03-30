@@ -27,13 +27,13 @@ ui <- fluidPage(
                         label = "Sensitivity",
                         min = 0,
                         max = 100,
-                        value = 80),
+                        value = 70),
             
             sliderInput(inputId = "specificity",
                         label = "Specificity",
                         min = 0,
                         max = 100,
-                        value = 90),
+                        value = 95),
             
             sliderInput(inputId = "prevalence",
                         label = "Disease prevalence",
@@ -68,7 +68,7 @@ server <- function(input, output, session) {
     prev <- input$prevalence
 
     out <- calc(sens,spec,prev)
-        par(cex=2,mar=c(3,3,1,1),cex.lab=1)
+        par(cex=2,mar=c(3,3,1,1),cex.lab=1,pty="s")
         mosaicplot(t(out$x),main="",color=c("orange","maroon"))
       
     },height=600,width=600)
