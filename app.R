@@ -71,7 +71,7 @@ server <- function(input, output, session) {
         par(cex=2,mar=c(3,3,1,1),cex.lab=1)
         mosaicplot(t(out$x),main="",color=c("orange","maroon"))
       
-    },height=600)
+    },height=600,width=600)
   
     output$pvtable <- renderDataTable({
         sens <- input$sensitivity
