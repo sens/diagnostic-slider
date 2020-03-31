@@ -52,7 +52,7 @@ ui <- fluidPage(
                         value = round(100*(calc(80,90,10)$pv)$npv)),
             
             width=4),
-        mainPanel(plotOutput(outputId = "mosaicplot"),width=8)
+        mainPanel(plotOutput(outputId = "mosaicplot"),width=4)
         )
     )
 
@@ -60,6 +60,7 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram ----
 server <- function(input, output, session) {
 
+    output$readme <- renderText(paste(scan("readme.txt",what="raw",sep="\n"),sep=" "))
     
     output$mosaicplot <- renderPlot({
 
@@ -71,7 +72,7 @@ server <- function(input, output, session) {
         par(cex=2,mar=c(3,3,1,1),cex.lab=1,pty="s")
         mosaicplot(t(out$x),main="",color=c("orange","maroon"))
       
-    },height=600,width=600)
+    },height=550,width=550)
   
     output$pvtable <- renderDataTable({
         sens <- input$sensitivity
